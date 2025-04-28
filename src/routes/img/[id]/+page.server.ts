@@ -9,5 +9,18 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		.then((response) => response.json())
 		.catch(() => error(404, 'Not found'));
 
-	return imageData as PictureData;
+	let usernameData = await fetch(
+		`https://api.minecraftservices.com/minecraft/profile/lookup/${imageData.uploader}`,
+		{
+			mode: 'no-cors'
+		}
+	)
+		.then((response) => response.json())
+		.catch(() => error(404, 'Creator UUID invalid'));
+
+	return {
+		image: imageData as PictureData,
+		creator: usernameData as { id: string; name: string },
+		id: params.id
+	};
 };

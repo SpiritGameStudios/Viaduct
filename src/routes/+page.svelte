@@ -1,1 +1,3 @@
-<h1>Snapper stuff</h1>
+<title>Snapper Web</title>
+
+<h1>Snapper Web</h1>

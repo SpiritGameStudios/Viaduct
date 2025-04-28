@@ -98,7 +98,7 @@ a {
 }
 
 * {
-	@apply border-brand-border;
+	@apply border-brand-border select-none;
 	scrollbar-color: #8400ff #161b1d;
 }
 
