@@ -17,7 +17,9 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 			mode: 'no-cors',
 			headers: spiritHeaders
 		}
-	).then((response) => response.json());
+	)
+		.then((response) => response.json())
+		.catch((error) => error(404, 'Creator UUID invalid' + error));
 
 	return {
 		image: imageData as PictureData,
