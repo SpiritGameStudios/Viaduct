@@ -1,9 +1,11 @@
+import { spiritHeaders } from '$lib';
 import type { PictureData } from '$lib/types';
 import { error, type RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async ({ params }) => {
 	let imageData: PictureData = await fetch(`https://api.axolotlclient.com/v1/image/${params.id}`, {
-		mode: 'no-cors'
+		mode: 'no-cors',
+		headers: spiritHeaders
 	})
 		.then((response) => response.json())
 		.catch(() => error(404, 'Not found'));

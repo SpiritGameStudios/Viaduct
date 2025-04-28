@@ -1,1 +1,4 @@
-// place files you want to import through the `$lib` alias in this folder.
+export const spiritHeaders = {
+	'User-Agent': 'spiritgamestudios/snapperweb by Spirit Studios, hello@worldwidepixel.ca',
+	'Content-Type': 'application/json'
+};
