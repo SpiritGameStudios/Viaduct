@@ -9,11 +9,13 @@
 <div class="flex w-full flex-col items-center gap-4">
 	<div class="flex flex-col items-center gap-2">
 		<span class="text-xl font-bold">{data.image.filename}</span>
-		<span class="text-sm"
-			>by <a target="_blank" href={`https://namemc.com/profile/${data.creator.name}`}
-				>{data.creator.name}</a
-			></span
-		>
+		{#if data.creator.id}
+			<span class="text-sm"
+				>by <a target="_blank" href={`https://namemc.com/profile/${data.creator.name}`}
+					>{data.creator.name}</a
+				></span
+			>
+		{/if}
 	</div>
 	<a class="rounded-xl" target="_blank" href={`/img/${data.id}/raw`}>
 		<img
