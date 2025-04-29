@@ -5,6 +5,10 @@
 	let { children } = $props();
 </script>
 
+<svelte:head>
+	<meta name="theme-color" content="#8400ff" />
+</svelte:head>
+
 <div class="flex h-dvh flex-col">
 	<nav class="flex w-full flex-row justify-center border-b">
 		<div

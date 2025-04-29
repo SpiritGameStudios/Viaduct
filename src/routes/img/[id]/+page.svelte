@@ -15,7 +15,6 @@
 <meta name="author" content={data.creator.username} />
 <meta property="og:image" content={`/img/${data.id}/raw`} />
 <meta property="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#2b39fe" />
 
 <div class="flex w-full flex-col items-center gap-4">
 	<div class="flex flex-col items-center gap-2">
@@ -25,6 +24,7 @@
 				<span class="flex flex-row flex-wrap items-center gap-1">
 					by
 					<a
+						draggable="false"
 						class="pixelated flex flex-row flex-wrap items-center gap-2"
 						target="_blank"
 						href={`https://namemc.com/profile/${data.creator.username}`}
