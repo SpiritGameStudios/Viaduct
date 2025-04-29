@@ -23,6 +23,7 @@
 	function shareImage() {
 		if (browser) {
 			try {
+				if (!navigator.canShare()) throw new Error();
 				navigator.share({
 					url: `https://snapper.spiritstudios.dev/img/${data.id}`,
 					title: `${data.image.filename} on Snapper Web`,
