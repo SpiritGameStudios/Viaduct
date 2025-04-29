@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HairlineSeparator from '$lib/ui/HairlineSeparator.svelte';
 	import '../app.css';
 
 	let { children } = $props();
@@ -32,9 +33,9 @@
 					Image hosting by&nbsp;<a target="_blank" href="https://axolotlclient.com">AxolotlClient</a
 					>.
 				</span>
-				<span class="bg-brand-border h-5 w-[1px]"></span>
+				<HairlineSeparator />
 				<a target="_blank" href="https://axolotlclient.com/tos">Terms</a>
-				<span class="bg-brand-border h-5 w-[1px]"></span>
+				<HairlineSeparator />
 				<a target="_blank" href="https://axolotlclient.com/privacy">Privacy</a>
 			</span>
 		</div>
