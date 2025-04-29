@@ -20,6 +20,25 @@
 		}
 	}
 
+	function shareImage() {
+		if (browser) {
+			try {
+				navigator.share({
+					url: `https://snapper.spiritstudios.dev/img/${data.id}`,
+					title: `${data.image.filename} on Snapper Web`,
+					text: `Image shared at ${formatTime(new Date(data.image.shared_at))} via Snapper`,
+					files: [
+						new File([getImageBlob(data.image.file)], data.image.filename, {
+							type: 'image/png'
+						})
+					]
+				});
+			} catch {
+				console.log('Share functionality unavailable in your browser or operating system.');
+			}
+		}
+	}
+
 	let { data }: PageProps = $props();
 </script>
 
@@ -91,22 +110,7 @@
 		</Tooltip>
 		<Tooltip class="tooltip-spirit" tip="Share image">
 			<button>
-				<ShareIcon
-					onclick={() => {
-						if (browser) {
-							navigator.share({
-								url: `https://snapper.spiritstudios.dev/img/${data.id}`,
-								title: `${data.image.filename} on Snapper Web`,
-								text: `Image shared at ${formatTime(new Date(data.image.shared_at))} via Snapper`,
-								files: [
-									new File([getImageBlob(data.image.file)], data.image.filename, {
-										type: 'image/png'
-									})
-								]
-							});
-						}
-					}}
-				/>
+				<ShareIcon onclick={shareImage} />
 			</button>
 		</Tooltip>
 	</div>
