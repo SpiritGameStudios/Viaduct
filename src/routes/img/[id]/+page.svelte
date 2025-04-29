@@ -7,12 +7,13 @@
 </script>
 
 <title>{data.image.filename} | Snapper Web</title>
+<meta name="title" content={`${data.image.filename} on Snapper Web`} />
 <meta
 	name="description"
 	content={`Image shared at ${formatTime(new Date(data.image.shared_at))} via Snapper`}
 />
 <meta name="author" content={data.creator.username} />
-<meta property="og:image" content="https://spiritstudios.dev/og.png" />
+<meta property="og:image" content={`/img/${data.id}/raw`} />
 <meta property="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#2b39fe" />
 
