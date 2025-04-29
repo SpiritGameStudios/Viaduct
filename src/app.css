@@ -50,6 +50,17 @@
 		@apply bg-brand-background-secondary shadow-brand-background-secondary rounded-xl px-4 py-3 text-lg font-extrabold shadow-sm transition active:scale-95 active:shadow-none;
 	}
 
+	button {
+		@apply bg-brand-background-secondary flex cursor-pointer flex-col items-center justify-center gap-2 rounded-lg border p-2 shadow-2xl transition hover:brightness-125 active:scale-95;
+	}
+
+	.tooltip-spirit {
+		@apply !bg-brand-background-secondary flex flex-col items-center !rounded-lg border text-sm shadow-2xl;
+		.tip:before {
+			@apply !border-b-brand-border mx-[34.5%] mt-[-12px];
+		}
+	}
+
 	.pixelated {
 		image-rendering: pixelated;
 		image-rendering: -moz-crisp-edges;

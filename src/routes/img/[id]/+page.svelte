@@ -1,7 +1,24 @@
 <script lang="ts">
-	import { formatTime } from '$lib';
+	import { formatTime, getImageBlob } from '$lib';
 	import HairlineSeparator from '$lib/ui/HairlineSeparator.svelte';
+	import { CopyIcon, LinkIcon, ShareIcon } from '@lucide/svelte';
 	import type { PageProps } from './$types';
+	import Tooltip from 'sv-tooltip';
+	import { browser } from '$app/environment';
+
+	function copyImage() {
+		if (browser) {
+			try {
+				navigator.clipboard.write([
+					new ClipboardItem({
+						'image/png': getImageBlob(data.image.file)
+					})
+				]);
+			} catch (error) {
+				console.error('Failed to copy image to clipboard');
+			}
+		}
+	}
 
 	let { data }: PageProps = $props();
 </script>
@@ -49,10 +66,48 @@
 	</div>
 	<a class="rounded-xl" target="_blank" href={`/img/${data.id}/raw`}>
 		<img
-			class="rounded-xl border shadow-2xl"
+			class="pixelated rounded-xl border shadow-2xl"
 			draggable="false"
 			alt={`Image created by ${data.image.uploader}`}
 			src={`data:image;base64,${data.image.file}`}
 		/>
 	</a>
+	<div class="grid grid-cols-3 items-center gap-2">
+		<Tooltip class="tooltip-spirit" tip="Copy image">
+			<button onclick={copyImage}>
+				<CopyIcon />
+			</button>
+		</Tooltip>
+		<Tooltip class="tooltip-spirit" tip="Copy URL">
+			<button>
+				<LinkIcon
+					onclick={() => {
+						if (browser) {
+							navigator.clipboard.writeText(`https://snapper.spiritstudios.dev/img/${data.id}`);
+						}
+					}}
+				/>
+			</button>
+		</Tooltip>
+		<Tooltip class="tooltip-spirit" tip="Share image">
+			<button>
+				<ShareIcon
+					onclick={() => {
+						if (browser) {
+							navigator.share({
+								url: `https://snapper.spiritstudios.dev/img/${data.id}`,
+								title: `${data.image.filename} on Snapper Web`,
+								text: `Image shared at ${formatTime(new Date(data.image.shared_at))} via Snapper`,
+								files: [
+									new File([getImageBlob(data.image.file)], data.image.filename, {
+										type: 'image/png'
+									})
+								]
+							});
+						}
+					}}
+				/>
+			</button>
+		</Tooltip>
+	</div>
 </div>

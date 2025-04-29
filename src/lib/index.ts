@@ -7,3 +7,15 @@ export const formatTime = (time: Date) => {
 	const TIME_FORMAT = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'short' });
 	return TIME_FORMAT.format(time);
 };
+
+export function getImageBlob(data: string) {
+	const imageByteString = atob(data);
+	const imageArrayBuffer = new ArrayBuffer(imageByteString.length);
+	const imageIntArray = new Uint8Array(imageArrayBuffer);
+	for (let i = 0; i < imageByteString.length; i++) {
+		imageIntArray[i] = imageByteString.charCodeAt(i);
+	}
+	const imageBlob = new Blob([imageIntArray], { type: 'image/png' });
+
+	return imageBlob;
+}
