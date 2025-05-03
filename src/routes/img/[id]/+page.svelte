@@ -20,10 +20,17 @@
 		}
 	}
 
+	function canShare() {
+		if (browser) {
+			return navigator.canShare();
+		}
+		return false;
+	}
+
 	function shareImage() {
 		if (browser) {
 			try {
-				if (!navigator.canShare()) throw new Error();
+				if (!canShare()) throw new Error();
 				navigator.share({
 					url: `https://snapper.spiritstudios.dev/img/${data.id}`,
 					title: `${data.image.filename} on Snapper Web`,
@@ -111,9 +118,9 @@
 		</Tooltip>
 		<Tooltip
 			class="tooltip-spirit"
-			tip={`${navigator.canShare() ? 'Share image' : 'Browser does not support sharing'}`}
+			tip={`${canShare() ? 'Share image' : 'Browser does not support sharing'}`}
 		>
-			{#if navigator.canShare()}
+			{#if canShare()}
 				<button>
 					<ShareIcon onclick={shareImage} />
 				</button>

@@ -31,3 +31,13 @@ export type UserData = {
 export type UsernameHistoryEntry = {
 	username: string;
 };
+
+export type AxolotlUserData = {
+	uuid: string;
+	username: string;
+	registered: string;
+	status: {
+		type: 'online' | 'offline';
+		last_online: string;
+	};
+};
