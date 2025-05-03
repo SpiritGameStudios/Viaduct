@@ -11,14 +11,6 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		.then((response) => response.json())
 		.catch(() => error(404, 'Not found'));
 
-	let usernameData = { id: null, name: null };
-	try {
-		usernameData = await fetch(`https://api.ashcon.app/mojang/v2/user/${imageData.uploader}`, {
-			mode: 'no-cors',
-			headers: spiritHeaders
-		}).then((response) => response.json());
-	} catch {}
-
 	let userData = await fetch(`https://api.ashcon.app/mojang/v2/user/${imageData.uploader}`, {
 		mode: 'no-cors',
 		headers: spiritHeaders

@@ -35,6 +35,7 @@
 	--color-brand-background: #0b0d0e;
 	--color-brand-background-secondary: #161b1d;
 	--color-brand-border: #21292c;
+	--color-brand-disabled: #374347;
 	--color-brand-text: #f6f5fa;
 	--color-brand-text-strong: #ffffff;
 
@@ -79,6 +80,16 @@
 
 	a {
 		@apply underline;
+	}
+
+	a,
+	img {
+		user-select: none;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-drag: none;
+		-webkit-user-drag: none;
 	}
 
 	.md h1 {

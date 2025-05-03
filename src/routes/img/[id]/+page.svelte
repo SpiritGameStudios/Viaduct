@@ -84,7 +84,7 @@
 			</span>
 		{/if}
 	</div>
-	<a class="rounded-xl" target="_blank" href={`/img/${data.id}/raw`}>
+	<a draggable="false" class="rounded-xl" target="_blank" href={`/img/${data.id}/raw`}>
 		<img
 			class="pixelated rounded-xl border shadow-2xl"
 			draggable="false"
@@ -109,10 +109,19 @@
 				/>
 			</button>
 		</Tooltip>
-		<Tooltip class="tooltip-spirit" tip="Share image">
-			<button>
-				<ShareIcon onclick={shareImage} />
-			</button>
+		<Tooltip
+			class="tooltip-spirit"
+			tip={`${navigator.canShare() ? 'Share image' : 'Browser does not support sharing'}`}
+		>
+			{#if navigator.canShare()}
+				<button>
+					<ShareIcon onclick={shareImage} />
+				</button>
+			{:else}
+				<button>
+					<ShareIcon class="text-brand-disabled" onclick={shareImage} />
+				</button>
+			{/if}
 		</Tooltip>
 	</div>
 </div>
