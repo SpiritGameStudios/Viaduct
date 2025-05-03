@@ -21,13 +21,3 @@ export const GET: RequestHandler = async ({ params }) => {
 
 	return response;
 };
-
-/*
-export const load: PageServerLoad = async ({ fetch, params }) => {
-
-	return {
-		image: imageData as PictureData,
-		id: params.id
-	};
-};
-*/

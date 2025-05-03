@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import type { PictureData, UserData } from '$lib/types';
+import type { AxolotlUserData, PictureData, UserData } from '$lib/types';
 import { spiritHeaders } from '$lib';
 
 export const load: PageServerLoad = async ({ fetch, params }) => {
@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		.then((response) => response.json())
 		.catch(() => error(404, 'Not found'));
 
-	let userData = await fetch(`https://api.ashcon.app/mojang/v2/user/${imageData.uploader}`, {
+	let userData = await fetch(`https://api.axolotlclient.com/v1/user/${imageData.uploader}`, {
 		mode: 'no-cors',
 		headers: spiritHeaders
 	})
@@ -20,7 +20,7 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 
 	return {
 		image: imageData as PictureData,
-		creator: userData as UserData,
+		creator: userData as AxolotlUserData,
 		id: params.id
 	};
 };
