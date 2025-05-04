@@ -22,16 +22,18 @@
 
 	function canShare() {
 		if (browser) {
-			return navigator.canShare();
+			if (!!navigator.canShare) {
+				return true;
+			}
 		}
 		return false;
 	}
 
-	function shareImage() {
+	async function shareImage() {
 		if (browser) {
 			try {
 				if (!canShare()) throw new Error();
-				navigator.share({
+				await navigator.share({
 					url: `https://snapper.spiritstudios.dev/img/${data.id}`,
 					title: `${data.image.filename} on Snapper Web`,
 					text: `Image shared at ${formatTime(new Date(data.image.shared_at))} via Snapper`,
@@ -116,19 +118,21 @@
 				/>
 			</button>
 		</Tooltip>
-		<Tooltip
-			class="tooltip-spirit"
-			tip={`${canShare() ? 'Share image' : 'Browser does not support sharing'}`}
-		>
-			{#if canShare()}
-				<button>
-					<ShareIcon onclick={shareImage} />
-				</button>
-			{:else}
-				<button>
-					<ShareIcon class="text-brand-disabled" onclick={shareImage} />
-				</button>
-			{/if}
-		</Tooltip>
+		{#if browser}
+			<Tooltip
+				class="tooltip-spirit"
+				tip={`${canShare() ? 'Share image' : 'Browser does not support sharing'}`}
+			>
+				{#if canShare()}
+					<button>
+						<ShareIcon onclick={shareImage} />
+					</button>
+				{:else}
+					<button>
+						<ShareIcon class="text-brand-disabled" onclick={shareImage} />
+					</button>
+				{/if}
+			</Tooltip>
+		{/if}
 	</div>
 </div>
