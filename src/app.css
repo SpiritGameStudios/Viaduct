@@ -46,6 +46,7 @@
 	--font-sans: 'Inter', var(--font-stack);
 
 	--animate-pop: pop 0.5s ease-in-out;
+	--animate-focus-pop: focus-pop 0.25s ease-in-out;
 
 	@keyframes pop {
 		0% {
@@ -56,6 +57,15 @@
 		}
 		100% {
 			transform: scale(100%);
+		}
+	}
+
+	@keyframes focus-pop {
+		0% {
+			outline-width: 0rem;
+		}
+		100% {
+			outline-width: 0.25rem;
 		}
 	}
 }

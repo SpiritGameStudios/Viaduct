@@ -3,8 +3,13 @@ export const spiritHeaders = {
 	'Content-Type': 'application/json'
 };
 
-export const formatTime = (time: Date) => {
+export const formatDateTime = (time: Date) => {
 	const TIME_FORMAT = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'short' });
+	return TIME_FORMAT.format(time);
+};
+
+export const formatDate = (time: Date) => {
+	const TIME_FORMAT = new Intl.DateTimeFormat('en-US', { dateStyle: 'long' });
 	return TIME_FORMAT.format(time);
 };
 
