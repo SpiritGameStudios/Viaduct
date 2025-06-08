@@ -1,5 +1,5 @@
-# SnapperWeb
+# Viaduct
 
-📜 Web frontend for AxolotlClient's image services
+💌 Simple webpage to invite Cantilever Discord bots to servers
 
-Image hosting services provided by the lovely [Axolotl Client](https://axolotlclient.com/)
+https://modrinth.com/mod/cantilever

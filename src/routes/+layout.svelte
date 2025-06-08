@@ -15,8 +15,13 @@
 			class="flex w-full max-w-[72rem] flex-row items-center justify-center gap-4 p-6 sm:justify-between"
 		>
 			<span class="flex flex-row items-center gap-4 text-xl font-bold tracking-tight">
-				<img draggable="false" class="h-8 w-8 rounded-md" alt="Snapper logo" src="/snapper.png" />
-				Snapper Web
+				<img
+					draggable="false"
+					class="h-8 w-8 rounded-md"
+					alt="Cantilever logo"
+					src="/cantilever.png"
+				/>
+				Cantilever
 			</span>
 		</div>
 	</nav>
@@ -31,16 +36,6 @@
 				Made with &lt;3 by&nbsp;<a target="_blank" href="https://spiritstudios.dev"
 					>Spirit Studios</a
 				>.
-			</span>
-			<span class="flex flex-row items-center gap-3">
-				<span class="flex flex-row gap-0">
-					Image hosting by&nbsp;<a target="_blank" href="https://axolotlclient.com">AxolotlClient</a
-					>.
-				</span>
-				<HairlineSeparator />
-				<a target="_blank" href="https://axolotlclient.com/tos">Terms</a>
-				<HairlineSeparator />
-				<a target="_blank" href="https://axolotlclient.com/privacy">Privacy</a>
 			</span>
 		</div>
 	</footer>
